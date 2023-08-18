@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { TiHome } from "react-icons/ti";
 import { GiStoneBlock } from "react-icons/gi";
-import { BiSolidDish } from "react-icons/bi";
 import { HiDocumentText } from "react-icons/hi";
 import { usePathname } from "next/navigation";
 import { IoMdArrowDropright } from "react-icons/io";
 import { LuLayoutTemplate } from "react-icons/lu";
-import { BsMenuDown } from "react-icons/bs";
+import { BsMenuDown, BsFillTicketPerforatedFill } from "react-icons/bs";
 import { TbBrandAirtable } from "react-icons/tb";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -42,9 +41,9 @@ const Body = () => {
       ],
     },
     {
-      label: "Service",
-      href: "/service",
-      icon: <BiSolidDish />,
+      label: "Voucher",
+      href: "/voucher",
+      icon: <BsFillTicketPerforatedFill />,
     },
     {
       label: "Documents",
