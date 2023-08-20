@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
             <div className="w-2/12 ">
               <SideBar />
             </div>
-            <div className="w-10/12 my-5 mr-5 rounded-lg bg-gradient-to-b from-purple-200 to-slate-100 overflow-y-scroll p-5">
+            <div className="w-10/12 my-5 mr-5 rounded-lg bg-purple-200 overflow-hidden ">
               {children}
             </div>
           </div>
