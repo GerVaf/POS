@@ -1,26 +1,24 @@
 "use client";
+import React, { useEffect, useState } from "react";
 import { post } from "@/app/Global/api/inventory";
-import React, { useState } from "react";
 
 function Brand() {
   const [formData, setFormData] = useState({
     name: "",
     company: "",
-    information: "", 
+    description: "",
     agent: "",
     phone_no: "",
+    products: [],
   });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(formData);
 
-    try {
-      const response = await post('brand', formData);
-      console.log('Post response:', response.data);
-      // You can do something with the response data here
-    } catch (error) {
-      console.error('Error posting data:', error);
-    }
+    useEffect(()=>{
+      post('/brand',formData)
+    },[])
   };
 
   const handleInputChange = (event) => {
@@ -51,9 +49,9 @@ function Brand() {
         />
         <input
           type="text"
-          name="information" // Corrected field name
-          placeholder="Information"
-          value={formData.information} // Corrected field name
+          name="description"
+          placeholder="Description"
+          value={formData.description}
           onChange={handleInputChange}
         />
         <input

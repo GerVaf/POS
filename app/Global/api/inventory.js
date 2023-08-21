@@ -12,8 +12,8 @@ const axiosInstance = axios.create({
   },
 });
 
-export const get = (url, params = {}) => {
-  return axiosInstance.get(url, { params });
+export const get = (url) => {
+  return axiosInstance.get(url);
 };
 
 export const post = (url, data) => {
@@ -21,7 +21,7 @@ export const post = (url, data) => {
 };
 
 export const put = (url, data = {}) => {
-  return axiosInstance.put(url, data);
+  return axiosInstance.put(url, { data });
 };
 
 export const del = (id) => {
