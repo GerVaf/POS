@@ -1,5 +1,5 @@
-"use client";
-import React, { useEffect, useState } from "react";
+'use client'
+import React, { useState } from "react";
 import { post } from "@/app/Global/api/inventory";
 
 function Brand() {
@@ -16,9 +16,13 @@ function Brand() {
     event.preventDefault();
     console.log(formData);
 
-    useEffect(()=>{
-      post('/brand',formData)
-    },[])
+    try {
+      await post('/brand', formData);
+      // Handle successful submission, show a message or redirect
+    } catch (error) {
+      // Handle error, show an error message
+      console.error("Error submitting form:", error);
+    }
   };
 
   const handleInputChange = (event) => {
