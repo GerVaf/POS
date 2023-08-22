@@ -1,81 +1,34 @@
-'use client'
+"use client";
 import React, { useState } from "react";
-import { post } from "@/app/Global/api/inventory";
+import { del } from "@/app/Global/api/inventory";
 
-function Brand() {
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    description: "",
-    agent: "",
-    phone_no: "",
-    products: [],
-  });
+const Brand = () => {
+  const [itemId, setItemId] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    console.log(formData);
-
-    try {
-      await post('/brand', formData);
-      // Handle successful submission, show a message or redirect
-    } catch (error) {
-      // Handle error, show an error message
-      console.error("Error submitting form:", error);
-    }
-  };
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const handleDelete = () => {
+    del(`brand/${itemId}`)
+      .then((response) => {
+        setMessage("Item deleted successfully.");
+      })
+      .catch((error) => {
+        setMessage("An error occurred while deleting the item.");
+      });
   };
 
   return (
     <div>
-      <h2>Post Data</h2>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={formData.name}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="company"
-          placeholder="Company"
-          value={formData.company}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="description"
-          placeholder="Description"
-          value={formData.description}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="agent"
-          placeholder="Agent"
-          value={formData.agent}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="phone_no"
-          placeholder="Phone Number"
-          value={formData.phone_no}
-          onChange={handleInputChange}
-        />
-        <button type="submit">Submit</button>
-      </form>
+      <h2>Delete Item</h2>
+      <input
+        type="text"
+        placeholder="Item ID"
+        value={itemId}
+        onChange={(e) => setItemId(e.target.value)}
+      />
+      <button onClick={handleDelete}>Delete Item</button>
+      <p>{message}</p>
     </div>
   );
-}
+};
 
 export default Brand;
