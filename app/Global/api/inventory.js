@@ -1,8 +1,8 @@
 // api.js
 import axios from 'axios';
 
-const token = "4|m0mOqbX0uciAtAkdT8fNWvtrsQjUYOLAsjfLuJ55";
-const baseUrl = 'http://167.172.88.159/api/v1/';
+const token = "28|mDH8jshUDp8lXLdrVmUE5ZqyVYDfs9KF1sJFBVZ7";
+const baseUrl = 'https://c.mmsdev.site/api/v1/';
 
 const axiosInstance = axios.create({
   baseURL: baseUrl,
