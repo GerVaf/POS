@@ -1,4 +1,3 @@
-// api.js
 import axios from "axios";
 
 const token = "20|Kv3kaZkAOaIseAf5FafnYRuaB09hqL7jDFCRxGkN";
