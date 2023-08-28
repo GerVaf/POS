@@ -11,7 +11,7 @@ const Voucher = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    get("/voucher")
+    get("voucher")
       .then((response) => {
         console.log(setData(response.data.data));
       })
@@ -32,9 +32,7 @@ const Voucher = () => {
       console.log(error);
     });
   };
-  useEffect(() => {
-    del()
-  },[]);
+  
   
 
   return (
@@ -73,13 +71,13 @@ const Voucher = () => {
                   <div className="w-6/12 flex justify-around">
                     <button
                       onClick={() => dispatch(addvoucher(vou))}
-                      className=" rounded-lg text-lg font-bold  bg-white text-purple-600 hover:text-white hover:bg-purple-700 transition duration-200 px-3 py-2 "
+                      className=" rounded-lg text-sm font-bold  bg-white text-purple-600 hover:text-white hover:bg-purple-700 transition duration-200 px-3 py-2 "
                     >
                       Detail
                     </button>
                     <button
                       onClick={() => deleteHander(vou?.id)}
-                      className=" rounded-lg text-lg font-bold  bg-white text-red-600 hover:text-white hover:bg-red-500 transition duration-200 px-3 py-2 "
+                      className=" rounded-lg text-sm font-bold  bg-white text-red-600 hover:text-white hover:bg-red-500 transition duration-200 px-3 py-2 "
                     >
                       Delete
                     </button>

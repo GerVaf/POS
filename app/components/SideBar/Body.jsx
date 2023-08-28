@@ -4,8 +4,8 @@ import { GiStoneBlock } from "react-icons/gi";
 import { HiDocumentText } from "react-icons/hi";
 import { usePathname } from "next/navigation";
 import { IoMdArrowDropright } from "react-icons/io";
-import { LuLayoutTemplate } from "react-icons/lu";
-import { BsMenuDown, BsFillTicketPerforatedFill } from "react-icons/bs";
+import { LuLayoutTemplate, LuBarChartHorizontal } from "react-icons/lu";
+import { BsFillTicketPerforatedFill } from "react-icons/bs";
 import { TbBrandAirtable } from "react-icons/tb";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -36,7 +36,7 @@ const Body = () => {
         {
           label: "Stock",
           href: "/inventory/stock",
-          icon: <BsMenuDown />,
+          icon: <LuBarChartHorizontal />,
         },
       ],
     },
@@ -46,8 +46,8 @@ const Body = () => {
       icon: <BsFillTicketPerforatedFill />,
     },
     {
-      label: "Documents",
-      href: "/document",
+      label: "Creation",
+      href: "/creation",
       icon: <HiDocumentText />,
     },
   ];
