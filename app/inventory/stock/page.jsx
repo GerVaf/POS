@@ -1,10 +1,10 @@
-import StockList from "./components/StockList";
+import Product from "./components/Product";
 
 const Stock = () => {
   
   return (
     <div>
-      <StockList/>
+      <Product/>
     </div>
   )
 };
