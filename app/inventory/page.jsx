@@ -10,6 +10,7 @@ const Inventory = () => {
       icon: <LuLayoutTemplate />,
       description: "",
       note: "You can do all of management here!",
+
     },
     {
       label: "Brand",
@@ -35,6 +36,7 @@ const Inventory = () => {
             className="w-2/6 bg-gray-50 mx-3 my-10 rounded-lg shadow-sm p-5 hover:text-gray-50 text-purple-600 hover:bg-purple-600 transition duration-200 group"
             href={block?.href}
           >
+
             <div className="  flex ">
               <p className="w-2/5 flex items-center justify-center h-[110px] text-[60px] group-hover:bg-gray-50 bg-purple-600 group-hover:text-purple-600 transition duration-200 rounded-lg text-gray-50">
                 {block?.icon}

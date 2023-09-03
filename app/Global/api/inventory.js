@@ -1,21 +1,36 @@
+// api.js
 import axios from "axios";
+import Cookies from "js-cookie";
 
-const token = "10|12yVsOoTs39Mmy0L5S1yaGwyIzhkDHHH1YwF3CGE";
 const baseUrl = "https://c.mmsdev.site/api/v1/";
 
 const axiosInstance = axios.create({
   baseURL: baseUrl,
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
+
   },
+});
+
+// Function to get the token from the cookie
+const getToken = () => {
+  return Cookies.get('token');
+};
+
+// Interceptor to set the Authorization header with the token
+axiosInstance.interceptors.request.use((config) => {
+  const token = getToken();
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
 });
 
 export const get = (url) => {
   return axiosInstance.get(url);
 };
 
-export const post = (url, data) => { 
+export const post = (url, data) => {
   return axiosInstance.post(url, data);
 };
 
