@@ -7,7 +7,11 @@ import tea from "@/public/tea.jpg";
 import { BsCheckAll, BsPatchPlus } from "react-icons/bs";
 import Cart from "./components/Cart";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct, removeProduct } from "@/app/Global/Slice/productSlice";
+import {
+  addProduct,
+  autoActive,
+  removeProduct,
+} from "@/app/Global/Slice/productSlice";
 
 const Products = () => {
   // to show for added
@@ -49,9 +53,9 @@ const Products = () => {
                 onClick={() =>
                   products?.find((added) => added?.name === it?.name)
                     ? dispath(removeProduct(it))
-                    : dispath(addProduct(it))
+                    : [dispath(addProduct(it)), dispath(autoActive(it?.id))]
                 }
-                className="relative overflow-hidden p-5 flex bg-gray-100 rounded-lg h-full w-[95%] cursor-pointer hover:bg-slate-100 "
+                className="relative overflow-hidden p-10 flex bg-gray-100 rounded-lg h-full w-[95%] cursor-pointer hover:bg-slate-100 shadow-md "
               >
                 {/* add to cart noti  */}
                 <div
@@ -75,7 +79,7 @@ const Products = () => {
                 {/* information for item  */}
                 <div className="w-6/12 h-full flex flex-col pl-5 justify-around">
                   <p>Name: {it?.name}</p>
-                  <p>Price : {it?.sale_price}</p>
+                  <p>Price : {it?.sale_price} kyats</p>
                   <p>Unit : {it?.unit}</p>
                 </div>
               </div>

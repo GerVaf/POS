@@ -8,7 +8,7 @@ const voucherSlice = createSlice({
   },
   reducers: {
     addvoucher: (state, action) => {
-      state.voucher = action.payload;
+      state.voucher = action?.payload;
     },
     // Add more reducer functions as needed
   },

@@ -2,17 +2,19 @@
 
 import { get, post } from "@/app/Global/api/inventory";
 import { useEffect, useState } from "react";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const ProductForm = ({ setRefresh, refresh }) => {
   // product creation
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     name: "",
     brand_id: "",
     actual_price: "",
     sale_price: "",
     unit: "",
     more_information: "",
-  });
+  };
+  const [formData, setFormData] = useState(initialFormData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,8 +31,11 @@ const ProductForm = ({ setRefresh, refresh }) => {
     post("product", formData)
       .then((response) => {
         console.log(response);
-
+        toast.success("Product created successfully", {
+          autoClose: 2000,
+        });
         setRefresh(!refresh);
+        setFormData(initialFormData);
       })
       .catch((error) => console.log(error));
   };

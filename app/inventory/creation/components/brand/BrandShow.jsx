@@ -1,22 +1,35 @@
-"use client";
 import { get } from "@/app/Global/api/inventory";
+import Image from "next/image";
 import { useEffect, useState } from "react";
-
-const ProductShow = ({ refresh }) => {
+import brand  from '@/public/product.gif'
+const BrandShow = ({ refresh }) => {
   const [productData, setProductData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); 
+
   const fetchData = async () => {
-    await get("product")
-      .then((response) => setProductData(response?.data?.data))
-      .catch((error) => console.log(error));
+    setIsLoading(true); 
+    try {
+      const response = await get("brand");
+      setProductData(response?.data?.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false); 
+    }
   };
+
   useEffect(() => {
     fetchData();
   }, [refresh]);
-  console.log(productData);
+
   return (
-    <div className="flex flex-col gap-1 px-1">
-      {productData?.map((item) => {
-        return (
+    <div className="flex h-[100%] flex-col gap-1 px-1">
+      {isLoading ? ( 
+        <div className="flex justify-center items-center h-[100%] ">
+          <Image alt="img" src={brand}/>
+        </div> 
+      ) : (
+        productData?.map((item) => (
           <div
             className="h-[15vh] flex px-5 py-2 bg-violet-100 rounded-md justify-between text-gray-700"
             key={item?.id}
@@ -29,37 +42,29 @@ const ProductShow = ({ refresh }) => {
                 </span>
               </p>
               <p>
-                Brand :{" "}
+                Ph number :{" "}
                 <span className=" font-semibold text-purple-600 text-base">
-                  {item?.brand_name}
+                  {item?.phone_no}
                 </span>
               </p>
-            </div>
-            <div className="flex flex-col justify-around font-bold">
               <p>
-                Sale Price :{" "}
+                Agent :{" "}
                 <span className=" font-semibold text-purple-600 text-base">
-                  {item?.sale_price} kyats
+                  {item?.agent}
                 </span>{" "}
               </p>
               <p>
-                Total Stock :{" "}
+                Company :{" "}
                 <span className=" font-semibold text-purple-600 text-base">
-                  {item?.total_stock}
-                </span>
-              </p>
-              <p>
-                Unit :{" "}
-                <span className=" font-semibold text-purple-600 text-base">
-                  {item?.unit}
+                  {item?.company}
                 </span>
               </p>
             </div>
           </div>
-        );
-      })}
+        ))
+      )}
     </div>
   );
 };
 
-export default ProductShow;
+export default BrandShow;

@@ -24,9 +24,9 @@ const Body = () => {
       navIcon: <IoMdArrowDropright />,
       additional: [
         {
-          label: "Products",
-          href: "/inventory/products",
-          icon: <LuLayoutTemplate />,
+          label: "Creation",
+          href: "/inventory/creation",
+          icon: <HiDocumentText />,
         },
         {
           label: "Brand",
@@ -46,9 +46,9 @@ const Body = () => {
       icon: <BsFillTicketPerforatedFill />,
     },
     {
-      label: "Creation",
-      href: "/creation",
-      icon: <HiDocumentText />,
+      label: "Casher",
+      href: "/cash",
+      icon: <LuLayoutTemplate />,
     },
   ];
   const pathname = usePathname();

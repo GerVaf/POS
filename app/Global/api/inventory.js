@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const token = "1|q51IzD16pA9kmUfveSe7F2ZL2JNAfU6o53cjeYj1";
+const token = "10|12yVsOoTs39Mmy0L5S1yaGwyIzhkDHHH1YwF3CGE";
 const baseUrl = "https://c.mmsdev.site/api/v1/";
 
 const axiosInstance = axios.create({

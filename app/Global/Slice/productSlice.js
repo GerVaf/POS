@@ -74,6 +74,16 @@ const productSlice = createSlice({
         });
       }
     },
+    autoActive: (state, action) => {
+      const lastProductIndex = state.products.length - 1;
+
+      if (lastProductIndex >= 0) {
+        const lastProductId = state.products[lastProductIndex].id;
+        state.products.forEach((item) => {
+          item.active = item.id === lastProductId;
+        });
+      }
+    },
   },
 });
 
@@ -84,5 +94,6 @@ export const {
   qtyChange,
   resetQTY,
   deleteQTY,
+  autoActive,
 } = productSlice.actions;
 export default productSlice.reducer;

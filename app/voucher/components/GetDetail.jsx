@@ -21,7 +21,7 @@ const GetDetail = () => {
         console.log(error);
       });
   }, [voucherDetail?.id]);
-  // console.log(voucherDetail);
+  console.log(voucherDetail);
   console.log(perData);
 
   return (
@@ -45,24 +45,34 @@ const GetDetail = () => {
             </div>
           </div>
           {/* product record */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 my-5">
             {perData?.records?.map((item) => {
               return (
-                <div className="flex items-center justify-center" key={item.id}>
+                <div
+                  className="flex flex-col items-end justify-center"
+                  key={item.product_id}
+                >
+                  {/* imgae and detil  */}
+                  <div className="flex items-center justify-center">
                   <Image alt="item" className="w-2/5" src={food} />
                   <div className="w-3/5 font-semibold text-start pl-5 h-full flex flex-col gap-2">
-                    <p>name : {item?.product}</p>
-                    <p>quantity : {item?.quantity}</p>
+                    <p>Name : {item?.product_name}</p>
+                    <p>Quantity : {item?.quantity}</p>
+                    <p>Per price : {item?.sold_price} kyats</p>
                   </div>
+                  </div>
+                  <p className="font-bold text-gray-700">
+                    Total price for {item?.quantity} is {item?.cost}
+                  </p>
                 </div>
               );
             })}
           </div>
-          {/* coast  */}
+          {/* cost  */}
           <div className="flex flex-col gap-2 text-end">
-            <p>total : {perData?.total} kyats</p>
+            <p>total : {perData?.cash} kyats</p>
             <p>tax : {perData?.tax} kyats</p>
-            <p>coast : {perData?.net_total} kyats</p>
+            <p>cost : {perData?.net_total} kyats</p>
           </div>
         </div>
       )}
